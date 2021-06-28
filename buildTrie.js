@@ -1,17 +1,37 @@
+
 function buildTrie(...words) {
-    let objectTrie = {}
-    console.log('array', words)
+    var objectTrie = {}
     if (words.length === 0) {
         return objectTrie
     } else if (words.length === 1 && words == "") {
         return objectTrie
     } else {
-        let a = words.map(item => constructorTrie(item, null))
-        console.log('a', a)
+        for (let i = 0; i < words.length; i++) {
+
+            let actualWord = words[i];
+            var objectTest = {};
+
+            for (let j = actualWord.length; j > 0; j--) {
+                if (j >= 1 && j < actualWord.length) {
+                    let newWord = actualWord.slice(0, j);
+                    console.log("NewWord", newWord)
+                    console.log('objevBefore', objectTest)
+                    objectTest = { [newWord]: objectTest }
+                    console.log('objevAfter', objectTest)
+
+                } else if (j === actualWord.length) {
+                    objectTest = { [actualWord]: null }
+                }
+
+            }
+
+        }
+        return objectTest
+
     }
 }
 
-const constructorTrie = (word, object) => {
+function constructorTrie(word, object) {
     console.log(object)
 
     if (word.length >= 1) {
@@ -20,7 +40,7 @@ const constructorTrie = (word, object) => {
 
     } else {
         console.log('final', object)
-        return object
+        return "object"
     }
 }
 
